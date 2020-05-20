@@ -30,12 +30,12 @@
             </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink to="/" class="nav-link">
+            <NuxtLink to="/instruction" class="nav-link">
               使用<span>說明</span>
             </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink to="/" class="nav-link">
+            <NuxtLink to="/related" class="nav-link">
               相關<span>文章</span>
             </NuxtLink>
           </li>
@@ -54,7 +54,7 @@
     padding-left: 20px;
     padding-right: 20px;
   }
-  .nuxt-link-active{
+  .nuxt-link-exact-active{
     color: #fff !important;
   }
   .menu{

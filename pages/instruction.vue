@@ -1,7 +1,7 @@
 <template>
   <main>
     <Menu />
-    <Banner :zone="$nuxt.$route.name" title="開發團隊介紹"/>
+    <Banner :zone="$nuxt.$route.name" title="迷聲音樂使用說明"/>
   </main>
 </template>
 
