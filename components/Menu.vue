@@ -36,7 +36,7 @@
           </li>
           <li class="nav-item">
             <NuxtLink to="/related" class="nav-link">
-              相關<span>文章</span>
+              相關<span>連結</span>
             </NuxtLink>
           </li>
         </ul>
@@ -128,11 +128,9 @@ export default {
       if (document.documentElement.scrollTop >= 150) {
         if (nav.contains('shrink') === false) {
           nav.toggle('shrink')
-          console.log('document.documentElement.scrollTop >= 150')
         }
       } else if (nav.contains('shrink') === true) {
         nav.toggle('shrink')
-        console.log('nav.contains("shrink") === true')
       }
     }
   }

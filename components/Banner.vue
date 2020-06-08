@@ -1,27 +1,36 @@
 <template>
   <div class="banner">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 text">
-            <article>
-              <hr class="line">
-              <h2 class="text-light">
-                <span>Meason 迷聲</span>
-                <span>音樂素人交流平台</span>
-              </h2>
-              <p>{{title}}</p>
-              <a href="https://meason.music/" target="_blank">了解更多</a>
-            </article>
-          </div>
-          <div class="col-md-6 pic" :style="{'backgroundImage': `url(${require('@/assets/img/banner/'+zone+'-banner.jpg')})`}"/>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 text">
+          <article>
+            <hr class="line">
+            <h2 class="text-light">
+              <span>Meason 迷聲</span>
+              <span>音樂素人交流平台</span>
+            </h2>
+            <p>{{ title }}</p>
+            <a href="https://meason.music/" target="_blank">了解更多</a>
+          </article>
         </div>
+        <div class="col-md-6 pic" :style="{'backgroundImage': `url(${require('@/assets/img/banner/' + zone + '-banner.jpg')})`}" />
       </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['zone', 'title'],
+  props: {
+    zone: {
+      type: String,
+      default: null
+    },
+    title: {
+      type: String,
+      default: null
+    }
+  },
   data () {
     return {
       // zone: $nuxt.$route.path,

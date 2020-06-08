@@ -1,0 +1,76 @@
+.member{
+  background-color: #eee;
+  .team{
+    padding: 50px 8vw 20px 8vw;
+    > div{
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .col-md-6:nth-child(1) .pic{
+      background-image: url(~@/assets/img/team/Madilyn.jpg);
+    }
+    .col-md-6:nth-child(2) .pic{
+      background-image: url(~@/assets/img/team/Jennifer.jpg);
+    }
+    .col-md-6:nth-child(3) .pic{
+      background-image: url(~@/assets/img/team/Sam.jpg);
+    }
+    .col-md-6:nth-child(4) .pic{
+      background-image: url(~@/assets/img/team/Wayne.jpg);
+    }
+  }
+  .pic{
+    background-size: cover;
+    width: 80%;
+    background-position: center center;
+    border: 5px #eee solid;
+    outline: #72c8d5 2px solid;
+    box-shadow: 0 0 10px #72c8d5;
+  }
+  .detail {
+    position: absolute;
+    right: 0;
+    background-color: #0b0f2a;
+    padding: 20px;
+    bottom: 10%;
+    box-shadow: 0px 0px 10px rgba(252,227,137,0.7);
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 0;
+      color: #72c8d5;
+      text-shadow: 1px 3px 10px rgba(114,200,213,0.7);
+    }
+    p {
+      margin-bottom: 0;
+      color: #fff;
+      text-shadow: 1px 3px 10px rgba(255,255,255,0.8);
+    }
+  }
+  .dev-title{
+    background-image: url(~@/assets/img/bg.jpg);
+    background-size: cover;
+    // background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5vw;
+    h3{
+      color: #fff;
+      margin-bottom: 0;
+    }
+    a{
+      border: 2px #999 solid;
+      padding: 10px 20px;
+      color: #fff;
+    }
+  }
+  .row{
+    @media (min-width: 767.98px) {
+      flex-wrap: wrap-reverse;
+    }
+    @media (min-width: 992px) {
+      flex-wrap: wrap-reverse;
+    }
+  }
+}

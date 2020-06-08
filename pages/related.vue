@@ -1,7 +1,7 @@
 <template>
   <main>
     <Menu />
-    <Banner :zone="$nuxt.$route.name" title="相關連結及文章"/>
+    <Banner :zone="$nuxt.$route.name" title="相關連結及文章" />
   </main>
 </template>
 
