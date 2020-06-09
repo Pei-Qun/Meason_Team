@@ -1,15 +1,15 @@
 <template>
   <div class="banner">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row" :class="{'index': zone === 'index'}">
         <div class="col-md-6 text">
           <article>
             <hr class="line">
             <h2 class="text-light">
               <span>Meason 迷聲</span>
-              <span>音樂素人交流平台</span>
+              <span>{{ title }}</span>
             </h2>
-            <p>{{ title }}</p>
+            <p>音樂素人交流平台</p>
             <a href="https://meason.music/" target="_blank">了解更多</a>
           </article>
         </div>
@@ -43,7 +43,10 @@ export default {
 .banner{
   background-color: #0B0F30;
   .row{
-    height: 100vh;
+    height: 500px;
+    &.index{
+      height: 100vh;
+    }
     @media (max-width: 767.98px) {
       height: auto;
       flex-wrap: wrap-reverse;

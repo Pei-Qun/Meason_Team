@@ -17,13 +17,13 @@
         </div>
       </div>
     </div>
-    <div class="member">
+    <div class="member index">
       <div class="container-fluid">
         <div class="row flex-lg-wrap-reverse flex-md-wrap-reverse">
           <div class="col-xl-12 col-lg-8 ">
             <div class="row team">
               <div class="col-xl-3 col-lg-6 col-md-6">
-                <div class="pic">
+                <div class="pic pic1">
                   <div class="detail">
                     <h3>曾霈宭</h3>
                     <p>Full-Stack PG</p>
@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6 col-md-6">
-                <div class="pic">
+                <div class="pic pic2">
                   <div class="detail">
                     <h3>何嫥嫥</h3>
                     <p>Designer</p>
@@ -41,7 +41,7 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6 col-md-6">
-                <div class="pic">
+                <div class="pic pic3">
                   <div class="detail">
                     <h3>成竣昇</h3>
                     <p>Python PG</p>
@@ -50,7 +50,7 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6 col-md-6">
-                <div class="pic">
+                <div class="pic pic4">
                   <div class="detail">
                     <h3>賴家緯</h3>
                     <p>PR Practitioner</p>
@@ -62,7 +62,7 @@
           </div>
           <div class="col-xl-12 col-lg-4 dev-title">
             <h3>開發團隊</h3>
-            <NuxtLink to="/" class="nav-link">
+            <NuxtLink to="/about" class="nav-link">
               了解<span>更多</span>
             </NuxtLink>
           </div>

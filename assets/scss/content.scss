@@ -1,21 +1,22 @@
 .member{
-  background-color: #eee;
+  $bgc: #fff;
+  background-color: $bgc;
   .team{
     padding: 50px 8vw 20px 8vw;
     > div{
       position: relative;
       margin-bottom: 30px;
     }
-    .col-md-6:nth-child(1) .pic{
+    .pic1{
       background-image: url(~@/assets/img/team/Madilyn.jpg);
     }
-    .col-md-6:nth-child(2) .pic{
+    .pic2{
       background-image: url(~@/assets/img/team/Jennifer.jpg);
     }
-    .col-md-6:nth-child(3) .pic{
+    .pic3{
       background-image: url(~@/assets/img/team/Sam.jpg);
     }
-    .col-md-6:nth-child(4) .pic{
+    .pic4{
       background-image: url(~@/assets/img/team/Wayne.jpg);
     }
   }
@@ -23,7 +24,7 @@
     background-size: cover;
     width: 80%;
     background-position: center center;
-    border: 5px #eee solid;
+    border: 5px $bgc solid;
     outline: #72c8d5 2px solid;
     box-shadow: 0 0 10px #72c8d5;
   }
@@ -40,6 +41,7 @@
       margin-bottom: 0;
       color: #72c8d5;
       text-shadow: 1px 3px 10px rgba(114,200,213,0.7);
+      margin-bottom: 8px;
     }
     p {
       margin-bottom: 0;
@@ -63,14 +65,23 @@
       border: 2px #999 solid;
       padding: 10px 20px;
       color: #fff;
+      transition: all 0.2s ease-in-out;
+      &:hover{
+        background-color: #fff;
+        color: #333;
+        border-color: #fff;
+      }
     }
   }
-  .row{
-    @media (min-width: 767.98px) {
-      flex-wrap: wrap-reverse;
+  &.index{
+    $bgc: #eee;
+    .row{
+      @media (min-width: 767.98px) {
+        flex-wrap: wrap-reverse;
+      }
+      @media (min-width: 992px) {
+        flex-wrap: wrap-reverse;
+      }
     }
-    @media (min-width: 992px) {
-      flex-wrap: wrap-reverse;
-    }
-  }
+  } 
 }

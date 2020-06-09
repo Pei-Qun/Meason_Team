@@ -39,6 +39,11 @@
               相關<span>連結</span>
             </NuxtLink>
           </li>
+          <li class="nav-item">
+            <NuxtLink to="/publication" class="nav-link">
+              投稿<span>專區</span>
+            </NuxtLink>
+          </li>
         </ul>
       </nav>
     </div>
