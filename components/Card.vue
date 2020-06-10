@@ -4,6 +4,7 @@
       class="card-img-top img"
       :to="`/posts/${data.uid}`"
       :style="{'background-image': `url(${data.img})`}"
+      :class="{'reject': data.status === 'reject'}"
     />
     <div class="card-body">
       <h3 class="card-title">
@@ -66,6 +67,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.reject{
+  background-image: url(~@/assets/img/undefine.jpg) !important;
+}
 .img{
   min-height: 160px;
   background-size: cover;

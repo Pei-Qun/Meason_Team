@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="圖層_1" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 576 512" style="enable-background:new 0 0 576 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#CCCCCC;}
+	.st1{fill:#EB7301;}
+	.st2{fill:#6D6D6D;}
+	.st3{font-family:'MicrosoftJhengHeiBold';}
+	.st4{font-size:48.6357px;}
+</style>
+<g>
+	<path class="st0" d="M419.2,367H146c-40.4,0-73.3-32.9-73.3-73.3V102.9H58c-24.3,0-44,19.7-44,44v234.7c0,24.3,19.7,44,44,44h352
+		c3.1,0,6.2-0.3,9.2-1V367z"/>
+	<path class="st0" d="M146,337.6h273.2v-58.7H160.7v-44l50.9-50.9c4.3-4.3,11.3-4.3,15.6,0l36.2,36.2L387.6,96
+		c4.3-4.3,11.3-4.3,15.6,0l80.2,80.2v102.7h-28.3l55.3,56.9c18.3-5.3,31.6-22.2,31.6-42.2V58.9c0-24.3-19.7-44-44-44H146
+		c-24.3,0-44,19.7-44,44v234.7C102,317.9,121.7,337.6,146,337.6z M204.7,58.9c24.3,0,44,19.7,44,44c0,24.3-19.7,44-44,44
+		s-44-19.7-44-44C160.7,78.6,180.4,58.9,204.7,58.9z"/>
+</g>
+<path class="st1" d="M562.1,424.2h-46.8l24.6,60c1.7,4.2-0.2,8.8-4.2,10.6l-21.7,9.5c-4,1.8-8.6-0.3-10.3-4.3l-23.4-57l-38.2,39.3
+	c-5.1,5.2-13.4,1.2-13.4-5.7V287c0-7.2,8.8-10.8,13.4-5.7l125.5,129.1C572.7,415.3,569,424.2,562.1,424.2L562.1,424.2z"/>
+<text transform="matrix(1 0 0 1 27.9048 478.3066)" class="st2 st3 st4">瀏覽裝置中的檔案</text>
+</svg>

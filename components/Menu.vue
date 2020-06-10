@@ -29,11 +29,11 @@
               團隊<span>介紹</span>
             </NuxtLink>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <NuxtLink to="/instruction" class="nav-link">
               使用<span>說明</span>
             </NuxtLink>
-          </li>
+          </li> -->
           <li class="nav-item">
             <NuxtLink to="/related" class="nav-link">
               相關<span>連結</span>

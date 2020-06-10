@@ -25,7 +25,7 @@
               <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="pic pic1">
                   <div class="detail">
-                    <h3>曾霈宭</h3>
+                    <h3>Madilyn</h3>
                     <p>Full-Stack PG</p>
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="曾霈宭">
@@ -34,7 +34,7 @@
               <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="pic pic2">
                   <div class="detail">
-                    <h3>何嫥嫥</h3>
+                    <h3>Jennifer</h3>
                     <p>Designer</p>
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="何嫥嫥">
@@ -43,7 +43,7 @@
               <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="pic pic3">
                   <div class="detail">
-                    <h3>成竣昇</h3>
+                    <h3>Sam</h3>
                     <p>Python PG</p>
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="成竣昇">
@@ -52,7 +52,7 @@
               <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="pic pic4">
                   <div class="detail">
-                    <h3>賴家緯</h3>
+                    <h3>Wayne</h3>
                     <p>PR Practitioner</p>
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="賴家緯">

@@ -10,7 +10,7 @@
               <span>{{ title }}</span>
             </h2>
             <p>音樂素人交流平台</p>
-            <a href="https://meason.music/" target="_blank">了解更多</a>
+            <a href="https://meason.music/" target="_blank">前往平台</a>
           </article>
         </div>
         <div class="col-md-6 pic" :style="{'backgroundImage': `url(${require('@/assets/img/banner/' + zone + '-banner.jpg')})`}" />
@@ -46,6 +46,9 @@ export default {
     height: 500px;
     &.index{
       height: 100vh;
+      .text{
+        padding-top: 100px;
+      }
     }
     @media (max-width: 767.98px) {
       height: auto;
@@ -56,7 +59,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
     article{
       max-width: 80%;
       color: #fff;
@@ -73,6 +75,12 @@ export default {
       align-items: center;
       justify-content: center;
       background-color: transparent;
+      transition: all 0.3s ease-in-out;
+      &:hover{
+        text-decoration: none;
+        background-color: #fff;
+        color: #0B0F30;
+      }
     }
     h2{
       display: flex;
@@ -88,9 +96,13 @@ export default {
       border-color: #fff;
       width: 100px;
       margin-bottom: 30px;
+      @media (max-width: 767.98px){
+        display: none;
+      }
     }
     @media (max-width: 767.98px) {
-      padding-bottom: 100px;
+      padding-top: 50px;
+      padding-bottom: 50px;
     }
   }
   .pic{

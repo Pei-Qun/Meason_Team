@@ -57,7 +57,7 @@
           <nav aria-label="Page navigation" class="d-flex justify-content-center mt-5">
             <ul class="pagination">
               <li class="page-item">
-                <a class="page-link" href="#">Previous</a>
+                <a class="page-link" href="#">上一頁</a>
               </li>
               <li class="page-item">
                 <a class="page-link" href="#">1</a>
@@ -69,7 +69,7 @@
                 <a class="page-link" href="#">3</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+                <a class="page-link" href="#">下一頁</a>
               </li>
             </ul>
           </nav>
