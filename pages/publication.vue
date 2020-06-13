@@ -1,7 +1,7 @@
 <template>
   <main>
     <Menu />
-    <Banner :zone="'publication'" title="投稿專區" />
+    <Banner zone="publication" title="新增投稿" bio="如有梗圖或是文章欲投稿到<a class='text-warning' href='https://www.facebook.com/measonmusic/'>【紛絲專頁】</a>上，可至本站進行投稿" />
     <div class="container py-5">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3">

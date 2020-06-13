@@ -5,17 +5,19 @@
         <nuxt-link to="/publication" class="btn btn-outline-secondary">
           回投稿區
         </nuxt-link>
-        <h3 class="h3">投稿內文</h3>
+        <h3 class="h3">
+          投稿內文
+        </h3>
         <nuxt-link to="/post/add_post" class="btn btn-outline-primary">
           立即發文
         </nuxt-link>
       </div>
       <section class="con row justify-content-center">
         <div class="col-lg-8">
-          <article class="pic" :style="{'background-image': `url(${data.img})`}"></article>
+          <article class="pic" :style="{'background-image': `url(${data.img})`}" />
           <article>
             <p>發文者</p>
-            <h4>{{ data.authName}}</h4>
+            <h4>{{ data.authName }}</h4>
           </article>
         </div>
       </section>

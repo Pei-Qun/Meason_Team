@@ -9,7 +9,7 @@
               <span>Meason 迷聲</span>
               <span>{{ title }}</span>
             </h2>
-            <p>音樂素人交流平台</p>
+            <p v-html="bio"></p>
             <a href="https://meason.music/" target="_blank">前往平台</a>
           </article>
         </div>
@@ -29,6 +29,10 @@ export default {
     title: {
       type: String,
       default: null
+    },
+    bio: {
+      type: String,
+      default: '音樂素人交流平台'
     }
   },
   data () {

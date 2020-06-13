@@ -95,12 +95,6 @@ export default {
           innerHTML: 'Body No Scripts',
           body: true
         }
-      ],
-      script: [
-        {
-          src: '/body.js',
-          body: true
-        }
       ]
     }
   }
