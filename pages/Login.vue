@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 import axios from 'axios'
@@ -47,8 +47,7 @@ export default {
                 vm.loginApi(reqData, gUser)
               } else {
                 vm.isLoading = true
-                vm.$store.commit('auth/firebaseAuthState_Change', true)
-                vm.$store.commit('auth/userData_Change', gUser)
+                vm.storeData(gUser)
                 vm.$router.push(loginUrl)
               }
             })
@@ -85,12 +84,19 @@ export default {
       axios.post(url, { uid: req.uid, user: req.user }).then((response) => {
         console.log('登入/註冊成功', response)
       }).then(() => {
-        vm.$store.commit('auth/firebaseAuthState_Change', true)
-        vm.$store.commit('auth/userData_Change', gUser)
+        vm.storeData(gUser)
         vm.$router.push(loginUrl)
       }).catch(function (error) {
         console.error('寫入使用者資訊錯誤', error)
       })
+    },
+    storeData (gUser) {
+      const vm = this
+      vm.$store.commit('auth/firebaseAuthState_Change', true)
+      vm.$store.commit('auth/id_Change', gUser.uid)
+      vm.$store.commit('auth/photoURL_Change', gUser.photoURL)
+      vm.$store.commit('auth/displayName_Change', gUser.displayName)
+      vm.$store.commit('auth/email_Change', gUser.email)
     }
   }
 }

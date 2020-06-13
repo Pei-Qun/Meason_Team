@@ -49,6 +49,11 @@
               登出
             </a>
           </li>
+          <!-- <li class="nav-item">
+            <a href="#" class="nav-link" @click.prevent="logout">
+              登出
+            </a>
+          </li> -->
         </ul>
       </nav>
     </div>
