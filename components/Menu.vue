@@ -44,6 +44,11 @@
               投稿<span>專區</span>
             </NuxtLink>
           </li>
+          <li v-if="firebaseAuthState === true" class="nav-item">
+            <a href="#" class="nav-link" @click.prevent="logout">
+              登出
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -117,8 +122,14 @@
 </style>
 
 <script>
+import firebase from 'firebase/app'
 
 export default {
+  computed: {
+    firebaseAuthState () {
+      return this.$store.state.auth.firebaseAuthState
+    }
+  },
   mounted () {
     const vm = this
     vm.$nextTick(() => {
@@ -137,6 +148,14 @@ export default {
       } else if (nav.contains('shrink') === true) {
         nav.toggle('shrink')
       }
+    },
+    logout () {
+      const vm = this
+      firebase.auth().signOut().then(function () {
+        vm.$store.commit('auth/firebaseAuthState_Change', false)
+      }, function (error) {
+        console.log(error)
+      })
     }
   }
 }

@@ -4,97 +4,108 @@
     <Banner zone="publication" title="新增投稿" bio="如有梗圖或是文章欲投稿到<a class='text-warning' href='https://www.facebook.com/measonmusic/'>【紛絲專頁】</a>上，可至本站進行投稿" />
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8 mt-5">
-          <form action="" @submit.prevent="">
-            <ValidationProvider v-slot="{ errors, validate }"  rules="ext:jpg,png|size:100" class="img-area" tag="div" name="圖片">
-              <label for="file-input" class="files">
-                <img
-                  v-if="!tempDom.imgurl"
-                  src="~/assets/img/images-select.svg"
-                  alt="貼文圖片選擇"
-                  class="select-img"
-                >
-                <div v-else class="img-preview">
-                  <img id="scream" :src="tempDom.imgurl">
+        <div class="col-lg-8 mt-5 mb-5">
+          <ValidationObserver ref="form">
+            <form @submit.prevent="onSubmit">
+              <ValidationProvider v-slot="{ errors, validate }" rules="ext:jpg,png|size:100" class="img-area" tag="div" name="圖片">
+                <label for="file-input" class="files">
+                  <img
+                    v-if="!tempDom.imgurl"
+                    src="~/assets/img/images-select.svg"
+                    alt="貼文圖片選擇"
+                    class="select-img"
+                  >
+                  <div v-else class="img-preview">
+                    <img id="scream" :src="tempDom.imgurl">
+                  </div>
+                  <input
+                    id="file-input"
+                    name="img"
+                    type="file"
+                    multiple="true"
+                    accept="image/*"
+                    @change="preview($event, validate)"
+                  >
+                  <p class="text-danger mt-1 small">
+                    {{ errors[0] }}
+                  </p>
+                </label>
+              </ValidationProvider>
+              <ValidationProvider v-slot="{ errors }" rules="required" tag="div" class="form-group" name="商品種類">
+                <label for="classify_option">投稿分類</label>
+                <select id="classify_option" v-model="formData.classify" class="form-control">
+                  <option value="" disabled>
+                    請選擇
+                  </option>
+                  <option v-for="item in classifyOption" :key="item">
+                    {{ item }}
+                  </option>
+                </select>
+                <small v-if="errors.length > 0" class="text-danger text-small">{{ errors[0] }}</small>
+              </ValidationProvider>
+              <ValidationProvider v-slot="{ errors }" rules="required" tag="div" class="form-group" name="匿名">
+                <label for="incognito">是否匿名</label>
+                <select id="incognito" v-model="formData.incognito" class="form-control">
+                  <option value="true">
+                    是
+                  </option>
+                  <option value="false">
+                    否
+                  </option>
+                </select>
+                <small v-if="errors.length > 0" class="text-danger text-small">{{ errors[0] }}</small>
+              </ValidationProvider>
+              <div class="original form-group">
+                <label for="original_select">是否為原創</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <select id="original_select" v-model="tempDom.original" name="original_select" class="btn btn-outline-secondary dropdown-toggle">
+                      <option value="false">
+                        非原創
+                      </option>
+                      <option value="true">
+                        原創
+                      </option>
+                    </select>
+                  </div>
+                  <ValidationProvider
+                    v-if="formData.original != 'original'"
+                    v-slot="{ errors }"
+                    rules="required"
+                    tag="div"
+                    class="d-flex align-items-center"
+                    name="出處"
+                  >
+                    <input
+                      v-model="formData.original"
+                      type="text"
+                      class="form-control"
+                      aria-label="是否為原創投稿"
+                      placeholder="請註明出處"
+                    >
+                    <small v-if="errors.length > 0" class="text-danger text-small nowrap">{{ errors[0] }}</small>
+                  </ValidationProvider>
+                  <div v-else>
+                    <input
+                      type="text"
+                      class="form-control"
+                      aria-label="是否為原創投稿"
+                      placeholder="本文為個人原創"
+                      disabled
+                    >
+                  </div>
                 </div>
-                <input
-                  id="file-input"
-                  name="img"
-                  type="file"
-                  multiple="true"
-                  accept="image/*"
-                  @change="validate"
-                >
-                <p class="text-danger mt-1 small">
-                  {{ errors[0] }}
-                </p>
-                <!-- <button type="button" class="btn btn-primary" @click="uploadImg()">
-                  上傳圖片
-                </button> -->
-              </label>
-            </ValidationProvider>
-            <ValidationProvider v-slot="{ errors }" rules="required" tag="div" class="form-group" name="商品種類">
-              <label for="classify_option">投稿分類</label>
-              <select id="classify_option" v-model="formData.classify" class="form-control">
-                <option value="" disabled>
-                  請選擇
-                </option>
-                <option v-for="item in classifyOption" :key="item">
-                  {{ item }}
-                </option>
-              </select>
-              <small v-if="errors.length > 0" class="text-danger text-small">{{ errors[0] }}</small>
-            </ValidationProvider>
-            <ValidationProvider v-slot="{ errors }" rules="required" tag="div" class="form-group" name="匿名">
-              <label for="incognito">是否匿名</label>
-              <select id="incognito" v-model="formData.incognito" class="form-control">
-                <option value="true">
-                  是
-                </option>
-                <option value="false">
-                  否
-                </option>
-              </select>
-              <small v-if="errors.length > 0" class="text-danger text-small">{{ errors[0] }}</small>
-            </ValidationProvider>
-            <div class="original form-group">
-              <label for="original_select">是否為原創</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <select id="original_select" v-model="tempDom.original" name="original_select" class="btn btn-outline-secondary dropdown-toggle">
-                    <option value="false">
-                      非原創
-                    </option>
-                    <option value="true">
-                      原創
-                    </option>
-                  </select>
-                </div>
-                <input
-                  v-if="formData.original != 'original'"
-                  v-model="formData.original"
-                  type="text"
-                  class="form-control"
-                  aria-label="是否為原創投稿"
-                  placeholder="請註明出處"
-                >
-                <input
-                  v-else
-                  type="text"
-                  class="form-control"
-                  aria-label="是否為原創投稿"
-                  placeholder="本文為個人原創"
-                  disabled
-                >
               </div>
-              <small class="text-danger text-small">123</small>
-            </div>
-            <div class="form-group">
-              <label for="content">貼文內容</label>
-              <textarea id="content" v-model="formData.content" class="form-control mt-1" placeholder="貼文內容" />
-              <small class="text-danger text-small">We'll never share your email with anyone else.</small>
-            </div>
-          </form>
+              <ValidationProvider v-slot="{ errors }" rules="required|min:5|max:500" tag="div" class="form-group" name="貼文內容">
+                <label for="content">貼文內容</label>
+                <textarea id="content" v-model="formData.content" class="form-control mt-1" placeholder="貼文內容" />
+                <small v-if="errors.length > 0" class="text-danger text-small">{{ errors[0] }}</small>
+              </ValidationProvider>
+              <button type="submit" class="btn btn-success">
+                送出投稿
+              </button>
+            </form>
+          </ValidationObserver>
         </div>
       </div>
     </div>
@@ -104,7 +115,7 @@
 <script>
 import firebase from 'firebase'
 import $ from 'jquery'
-import { ValidationProvider, extend, localize } from 'vee-validate'
+import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate'
 import { required, min, max, ext, size } from 'vee-validate/dist/rules'
 import zhTW from 'vee-validate/dist/locale/zh_TW.json'
 import Menu from '~/components/Menu.vue'
@@ -121,8 +132,12 @@ extend('size', size)
 localize('zhTW', zhTW)
 
 export default {
+  middleware: 'routerAuth',
+  meta: {
+    requiresAuth: true
+  },
   components: {
-    Menu, Banner, ValidationProvider
+    Menu, Banner, ValidationProvider, ValidationObserver
   },
   data () {
     return {
@@ -177,22 +192,23 @@ export default {
     }
   },
   mounted () {
-    const firebaseConfig = {
-      apiKey: process.env.apiKey,
-      authDomain: process.env.authDomain,
-      databaseURL: process.env.databaseURL,
-      projectId: process.env.projectId,
-      storageBucket: process.env.storageBucket,
-      messagingSenderId: process.env.messagingSenderId
-    }
-    firebase.initializeApp(firebaseConfig)
+    // const firebaseConfig = {
+    //   apiKey: process.env.apiKey,
+    //   authDomain: process.env.authDomain,
+    //   databaseURL: process.env.databaseURL,
+    //   projectId: process.env.projectId,
+    //   storageBucket: process.env.storageBucket,
+    //   messagingSenderId: process.env.messagingSenderId
+    // }
+    // firebase.initializeApp(firebaseConfig)
   },
   methods: {
-    preview (e) {
+    preview (e, validate) {
       const vm = this
       const file = e.target.files[0]
       vm.tempDom.imgurl = URL.createObjectURL(file)
       vm.formData.img = ''
+      validate(e)
     },
     cvs () {
       const vm = this
@@ -247,6 +263,14 @@ export default {
         u8arr[n] = bstr.charCodeAt(n)
       }
       return new File([u8arr], filename, { type: mime })
+    },
+    onSubmit () {
+      this.$refs.form.validate().then((success) => {
+        if (!success) {
+          return
+        }
+        alert('Form has been submitted!')
+      })
     }
   },
   head: () => {
@@ -302,5 +326,9 @@ export default {
 #content{
   resize: none;
   min-height: 200px;
+}
+.nowrap{
+  white-space: nowrap;
+  margin-left: 5px;
 }
 </style>

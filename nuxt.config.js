@@ -32,7 +32,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: '@/plugins/bootstrap.js'}
+    {src: '@/plugins/bootstrap.js'},
+    {src: '@/plugins/firebase.js'}
   ],
   /*
   ** Nuxt.js dev-modules

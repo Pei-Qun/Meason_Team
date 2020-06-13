@@ -88,6 +88,18 @@ export default {
           hid: 'description',
           name: 'description',
           content: 'Home page description'
+        }, {
+          name: 'twitter:title',
+          content: 'description'
+        }, {
+          name: 'twitter:description',
+          content: 'description'
+        }, {
+          name: 'twitter:image',
+          content: 'img'
+        }, {
+          name: 'twitter:card',
+          content: 'img'
         }
       ],
       noscript: [

@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-12 py-3">
                   <h4>負責範圍</h4>
-                  <p>公關及行銷</p>
+                  <p>對內外公共關係實務與宣傳</p>
                 </div>
               </div>
             </li>

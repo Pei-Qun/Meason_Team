@@ -9,7 +9,7 @@
               <span>Meason 迷聲</span>
               <span>{{ title }}</span>
             </h2>
-            <p v-html="bio"></p>
+            <p v-html="bio" />
             <a href="https://meason.music/" target="_blank">前往平台</a>
           </article>
         </div>

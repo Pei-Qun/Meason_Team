@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore'
-import 'firebase/database'
+// import 'firebase/auth'
+// import 'firebase/firestore'
+// import 'firebase/database'
 
 const firebaseConfig = {
   apiKey: process.env.apiKey,
@@ -11,12 +11,12 @@ const firebaseConfig = {
   storageBucket: process.env.storageBucket,
   messagingSenderId: process.env.messagingSenderId
 }
-// firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig)
 
-!firebase.apps.length ? firebase.initializeApp(config) : ''
-export const GoogleProvider = new firebase.auth.GoogleAuthProvider()
-export const GoogleProvider = new firebase.auth.GoogleAuthProvider()
-export const auth = firebase.auth()
-export const DB = firebase.database()
-export const StoreDB = firebase.firestore()
-export default firebase
+// !firebase.apps.length ? firebase.initializeApp(config) : ''
+// export const GoogleProvider = new firebase.auth.GoogleAuthProvider()
+// export const GoogleProvider = new firebase.auth.GoogleAuthProvider()
+// export const auth = firebase.auth()
+// export const DB = firebase.database()
+// export const StoreDB = firebase.firestore()
+// export default firebase

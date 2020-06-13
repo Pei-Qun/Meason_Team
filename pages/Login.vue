@@ -18,6 +18,7 @@ export default {
   },
   mounted () {
     const vm = this
+    const loginUrl = localStorage.getItem('loginUrl')
     const uiConfig = {
       // signInSuccessUrl: '/',
       signInOptions: [
@@ -43,10 +44,12 @@ export default {
                     uid: gUser.uid
                   }
                 }
-                vm.loginApi(reqData)
+                vm.loginApi(reqData, gUser)
               } else {
                 vm.isLoading = true
-                vm.$router.go(-3)
+                vm.$store.commit('auth/firebaseAuthState_Change', true)
+                vm.$store.commit('auth/userData_Change', gUser)
+                vm.$router.push(loginUrl)
               }
             })
           }
@@ -57,15 +60,15 @@ export default {
       }
       // signInFlow: "popup"
     }
-    const firebaseConfig = {
-      apiKey: process.env.apiKey,
-      authDomain: process.env.authDomain,
-      databaseURL: process.env.databaseURL,
-      projectId: process.env.projectId,
-      storageBucket: process.env.storageBucket,
-      messagingSenderId: process.env.messagingSenderId
-    }
-    firebase.initializeApp(firebaseConfig)
+    // const firebaseConfig = {
+    //   apiKey: process.env.apiKey,
+    //   authDomain: process.env.authDomain,
+    //   databaseURL: process.env.databaseURL,
+    //   projectId: process.env.projectId,
+    //   storageBucket: process.env.storageBucket,
+    //   messagingSenderId: process.env.messagingSenderId
+    // }
+    // firebase.initializeApp(firebaseConfig)
 
     // const ui = new firebaseui.auth.AuthUI(firebase.auth())
     let ui = firebaseui.auth.AuthUI.getInstance()
@@ -75,13 +78,16 @@ export default {
     ui.start('#firebaseui-auth-container', uiConfig)
   },
   methods: {
-    loginApi (req) {
+    loginApi (req, gUser) {
       const vm = this
       const url = `${process.env.API}/fbLogin`
+      const loginUrl = localStorage.getItem('loginUrl')
       axios.post(url, { uid: req.uid, user: req.user }).then((response) => {
         console.log('登入/註冊成功', response)
       }).then(() => {
-        vm.$router.go(-3)
+        vm.$store.commit('auth/firebaseAuthState_Change', true)
+        vm.$store.commit('auth/userData_Change', gUser)
+        vm.$router.push(loginUrl)
       }).catch(function (error) {
         console.error('寫入使用者資訊錯誤', error)
       })
