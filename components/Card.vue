@@ -5,6 +5,7 @@
       :to="`/posts/${data.uid}`"
       :style="{'background-image': `url(${data.img})`}"
       :class="{'reject': data.status === 'reject'}"
+      :title="data.content"
     />
     <div class="card-body">
       <h3 class="card-title">

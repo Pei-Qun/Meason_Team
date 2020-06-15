@@ -46,6 +46,48 @@ export default {
       incognito: true,
       timestamp: '1591696005476'
     }
+  },
+  head () {
+    return {
+      title: `${this.data.content.slice(0, 10)} | Meason Team`,
+      meta: [
+        {
+          hid: `${this.data.content.slice(0, 10)} | Meason Team`,
+          name: 'Meason Team',
+          content: '迷聲音樂粉絲專頁投稿貼文'
+        }, {
+          name: 'twitter:title',
+          content: `${this.data.content.slice(0, 10)} | Meason Team`
+        }, {
+          name: 'twitter:description',
+          content: '迷聲音樂粉絲專頁投稿貼文'
+        }, {
+          name: 'twitter:image',
+          content: this.data.img
+        }, {
+          name: 'twitter:card',
+          content: this.data.img
+        }, {
+          name: 'og:title',
+          content: `${this.data.content.slice(0, 10)} | Meason Team`
+        }, {
+          name: 'og:description',
+          content: '迷聲音樂粉絲專頁投稿貼文'
+        }, {
+          name: 'og:type',
+          content: 'music'
+        }, {
+          name: 'og:image',
+          content: this.data.img
+        }, {
+          itemprop: 'image',
+          content: this.data.img
+        }, {
+          itemprop: 'description',
+          content: '迷聲音樂粉絲專頁投稿貼文'
+        }
+      ]
+    }
   }
 }
 </script>

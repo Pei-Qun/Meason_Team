@@ -82,7 +82,7 @@ export default {
       const url = `${process.env.API}/fbLogin`
       const loginUrl = localStorage.getItem('loginUrl')
       axios.post(url, { uid: req.uid, user: req.user }).then((response) => {
-        console.log('登入/註冊成功', response)
+        // console.log('登入/註冊成功', response)
       }).then(() => {
         vm.storeData(gUser)
         vm.$router.push(loginUrl)
@@ -92,11 +92,53 @@ export default {
     },
     storeData (gUser) {
       const vm = this
-      vm.$store.commit('auth/firebaseAuthState_Change', true)
+      // vm.$store.commit('auth/firebaseAuthState_Change', true)
       vm.$store.commit('auth/id_Change', gUser.uid)
       vm.$store.commit('auth/photoURL_Change', gUser.photoURL)
       vm.$store.commit('auth/displayName_Change', gUser.displayName)
       vm.$store.commit('auth/email_Change', gUser.email)
+    }
+  },
+  head () {
+    return {
+      title: '登入或註冊 | Meason Team',
+      meta: [
+        {
+          hid: 'Meason Team',
+          name: 'Meason Team',
+          content: '迷聲音樂開發團隊及平台介紹'
+        }, {
+          name: 'twitter:title',
+          content: '登入或註冊 | Meason Team'
+        }, {
+          name: 'twitter:description',
+          content: '迷聲音樂開發團隊及平台介紹'
+        }, {
+          name: 'twitter:image',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'twitter:card',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'og:title',
+          content: '登入或註冊 | Meason Team'
+        }, {
+          name: 'og:description',
+          content: '迷聲音樂開發團隊及平台介紹'
+        }, {
+          name: 'og:type',
+          content: 'music'
+        }, {
+          name: 'og:image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'description',
+          content: '迷聲音樂開發團隊及平台介紹'
+        }
+      ]
     }
   }
 }

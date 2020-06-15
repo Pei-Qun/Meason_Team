@@ -5,6 +5,10 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 mt-5 mb-5">
+          <div class="user-ti">
+            <div class="pics" :style="{'background-image': `url(${userPhoto})`}" />
+            <p>{{ userName }}</p>
+          </div>
           <ValidationObserver ref="form">
             <form @submit.prevent="onSubmit">
               <ValidationProvider v-slot="{ errors, validate }" rules="ext:jpg,png|size:100" class="img-area" tag="div" name="圖片">
@@ -167,6 +171,12 @@ export default {
   computed: {
     classifyOption () {
       return this.$store.state.option.classify
+    },
+    userPhoto () {
+      return this.$store.state.auth.userData_photoURL
+    },
+    userName () {
+      return this.$store.state.auth.userData_displayName
     }
   },
   watch: {
@@ -205,8 +215,11 @@ export default {
   methods: {
     preview (e, validate) {
       const vm = this
+      vm.tempDom.imgurl = ''
       const file = e.target.files[0]
-      vm.tempDom.imgurl = URL.createObjectURL(file)
+      if (file) {
+        vm.tempDom.imgurl = URL.createObjectURL(file)
+      }
       vm.formData.img = ''
       validate(e)
     },
@@ -265,22 +278,59 @@ export default {
       return new File([u8arr], filename, { type: mime })
     },
     onSubmit () {
+      const vm = this
       this.$refs.form.validate().then((success) => {
         if (!success) {
           return
         }
-        alert('Form has been submitted!')
+        const fuc = async () => {
+          await vm.uploadImg()
+          await new Promise((resolve) => {
+            // console.log(vm.formData)
+          })
+        }
+        fuc()
       })
     }
   },
-  head: () => {
+  head () {
     return {
-      title: 'About Page',
+      title: '新增粉專投稿貼文 | Meason Team',
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: 'About page description'
+          hid: '新增粉專投稿貼文',
+          name: '新增粉專投稿貼文',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
+        }, {
+          name: 'twitter:title',
+          content: '新增粉專投稿貼文 | Meason Team'
+        }, {
+          name: 'twitter:description',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
+        }, {
+          name: 'twitter:image',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'twitter:card',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'og:title',
+          content: '新增粉專投稿貼文 | Meason Team'
+        }, {
+          name: 'og:description',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
+        }, {
+          name: 'og:type',
+          content: 'music'
+        }, {
+          name: 'og:image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'description',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
         }
       ]
     }
@@ -330,5 +380,19 @@ export default {
 .nowrap{
   white-space: nowrap;
   margin-left: 5px;
+}
+.user-ti{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  .pics{
+    margin-right: 5px;
+    height: 50px;
+    width: 50;
+    flex: 0 0 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+  }
 }
 </style>

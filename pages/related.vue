@@ -13,14 +13,44 @@ export default {
   components: {
     Menu, Banner
   },
-  head: () => {
+  head () {
     return {
-      title: 'About Page',
+      title: '迷聲相關連結 | Meason Team',
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: 'About page description'
+          hid: '迷聲相關連結',
+          name: '迷聲相關連結',
+          content: 'Meason 迷聲相關連結及文章分想'
+        }, {
+          name: 'twitter:title',
+          content: '迷聲相關連結 | Meason Team'
+        }, {
+          name: 'twitter:description',
+          content: 'Meason 迷聲相關連結及文章分想'
+        }, {
+          name: 'twitter:image',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'twitter:card',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'og:title',
+          content: '迷聲相關連結 | Meason Team'
+        }, {
+          name: 'og:description',
+          content: 'Meason 迷聲相關連結及文章分想'
+        }, {
+          name: 'og:type',
+          content: 'music'
+        }, {
+          name: 'og:image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'description',
+          content: 'Meason 迷聲相關連結及文章分想'
         }
       ]
     }

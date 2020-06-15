@@ -1,7 +1,7 @@
 <template>
   <main>
     <Menu />
-    <Banner :zone="$nuxt.$route.name" title="開發團隊及平台介紹" />
+    <Banner :zone="$nuxt.$route.name" title="音樂交流平台" bio="開發團隊及平台介紹" />
     <div class="about-group">
       <div class="container">
         <div class="row">
@@ -75,31 +75,50 @@
 <script>
 import Menu from '~/components/Menu.vue'
 import Banner from '~/components/Banner.vue'
+// import func from '../vue-temp/vue-editor-bridge'
 
 export default {
   components: {
     Menu, Banner
   },
-  head: () => {
+  head () {
     return {
-      title: '平台介紹 | Meason 迷聲',
+      title: '迷聲音樂交流平台 | Meason Team',
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: 'Home page description'
+          hid: 'Meason Team',
+          name: 'Meason Team',
+          content: '迷聲音樂開發團隊及平台介紹'
         }, {
           name: 'twitter:title',
-          content: 'description'
+          content: '迷聲音樂交流平台 | Meason Team'
         }, {
           name: 'twitter:description',
-          content: 'description'
+          content: '迷聲音樂開發團隊及平台介紹'
         }, {
           name: 'twitter:image',
-          content: 'img'
+          content: this.$store.state.metaImg
         }, {
           name: 'twitter:card',
-          content: 'img'
+          content: this.$store.state.metaImg
+        }, {
+          name: 'og:title',
+          content: '迷聲音樂交流平台 | Meason Team'
+        }, {
+          name: 'og:description',
+          content: '迷聲音樂開發團隊及平台介紹'
+        }, {
+          name: 'og:type',
+          content: 'music'
+        }, {
+          name: 'og:image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'description',
+          content: '迷聲音樂開發團隊及平台介紹'
         }
       ],
       noscript: [

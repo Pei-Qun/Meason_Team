@@ -129,14 +129,44 @@ export default {
       }
     ]
   },
-  head: () => {
+  head () {
     return {
-      title: 'About Page',
+      title: '粉專投稿專區 | Meason Team',
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: 'About page description'
+          hid: '投稿專區',
+          name: '投稿專區',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
+        }, {
+          name: 'twitter:title',
+          content: '粉專投稿專區 | Meason Team'
+        }, {
+          name: 'twitter:description',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
+        }, {
+          name: 'twitter:image',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'twitter:card',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'og:title',
+          content: '粉專投稿專區 | Meason Team'
+        }, {
+          name: 'og:description',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
+        }, {
+          name: 'og:type',
+          content: 'music'
+        }, {
+          name: 'og:image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'description',
+          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
         }
       ]
     }

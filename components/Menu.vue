@@ -1,9 +1,9 @@
 <template>
   <header id="navbar" class="menu navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
-      <NuxtLink to="/" class="navbar-brand">
+      <NuxtLink to="/" class="navbar-brand" title="Meason 迷聲音樂">
         <h1 class="mb-0">
-          Meason 迷聲音樂
+          Meason Team
         </h1>
       </NuxtLink>
       <button
@@ -20,36 +20,36 @@
       <nav id="navbarText" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <NuxtLink to="/" class="nav-link">
+            <NuxtLink to="/" class="nav-link" title="關於迷聲">
               關於<span>迷聲</span>
             </NuxtLink>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" title="關於迷聲">
             <NuxtLink to="/about" class="nav-link">
               團隊<span>介紹</span>
             </NuxtLink>
           </li>
-          <!-- <li class="nav-item">
+          <!-- <li class="nav-item" title="使用說明">
             <NuxtLink to="/instruction" class="nav-link">
               使用<span>說明</span>
             </NuxtLink>
           </li> -->
-          <li class="nav-item">
+          <li class="nav-item" title="相關連結">
             <NuxtLink to="/related" class="nav-link">
               相關<span>連結</span>
             </NuxtLink>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" title="投稿專區">
             <NuxtLink to="/publication" class="nav-link">
               投稿<span>專區</span>
             </NuxtLink>
           </li>
-          <li v-if="firebaseAuthState === true" class="nav-item">
+          <li v-if="firebaseAuthState === true" class="nav-item" title="關於迷聲">
             <a href="#" class="nav-link" @click.prevent="logout">
               登出
             </a>
           </li>
-          <!-- <li class="nav-item">
+          <!-- <li class="nav-item" title="關於迷聲">
             <a href="#" class="nav-link" @click.prevent="logout">
               登出
             </a>

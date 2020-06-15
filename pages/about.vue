@@ -1,7 +1,7 @@
 <template>
   <main>
     <Menu />
-    <Banner :zone="$nuxt.$route.name" title="開發團隊介紹" />
+    <Banner :zone="$nuxt.$route.name" title="開發團隊介紹" bio="團隊成員及平台歷程" />
     <div class="member py-5">
       <div class="container mt-5">
         <div class="team p-0">
@@ -138,14 +138,44 @@ export default {
   components: {
     Menu, Banner
   },
-  head: () => {
+  head () {
     return {
-      title: '開發團隊介紹 | Meason 迷聲',
+      title: '迷聲開發團隊介紹 | Meason Team',
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: 'About page description'
+          hid: '迷聲開發團隊介紹',
+          name: '迷聲開發團隊介紹',
+          content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
+        }, {
+          name: 'twitter:title',
+          content: '迷聲開發團隊介紹 | Meason Team'
+        }, {
+          name: 'twitter:description',
+          content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
+        }, {
+          name: 'twitter:image',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'twitter:card',
+          content: this.$store.state.metaImg
+        }, {
+          name: 'og:title',
+          content: '迷聲開發團隊介紹 | Meason Team'
+        }, {
+          name: 'og:description',
+          content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
+        }, {
+          name: 'og:type',
+          content: 'music'
+        }, {
+          name: 'og:image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'image',
+          content: this.$store.state.metaImg
+        }, {
+          itemprop: 'description',
+          content: '迷聲音樂開發團隊及平台介紹'
         }
       ]
     }
