@@ -167,15 +167,6 @@ export default {
         }, {
           name: 'og:type',
           content: 'music'
-        }, {
-          name: 'og:image',
-          content: this.$store.state.metaImg
-        }, {
-          itemprop: 'image',
-          content: this.$store.state.metaImg
-        }, {
-          itemprop: 'description',
-          content: '迷聲音樂開發團隊及平台介紹'
         }
       ]
     }

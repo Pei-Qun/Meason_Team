@@ -16,9 +16,6 @@ export default {
       errorCode: ''
     }
   },
-  beforeMoute () {
-
-  },
   mounted () {
     const vm = this
     const uiConfig = {
@@ -50,7 +47,7 @@ export default {
               } else {
                 vm.isLoading = true
                 vm.storeData(gUser)
-                vm.$router.push('/publication')
+                vm.$router.push('/posts/add_post')
               }
             })
           }
@@ -58,8 +55,8 @@ export default {
         uiShown () {
           vm.isLoading = false
         }
-      }
-      // signInFlow: "popup"
+      },
+      signInFlow: 'popup'
     }
     let ui = firebaseui.auth.AuthUI.getInstance()
     if (!ui) {
