@@ -2,7 +2,6 @@ import * as firebase from 'firebase'
 
 export default ({ route, store, redirect }) => {
   if (route.meta[0].requiresAuth) {
-    localStorage.setItem('loginUrl', window.location.pathname)
     // 需要驗證
     firebase.auth().onAuthStateChanged((userState) => {
       if (userState) {

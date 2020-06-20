@@ -201,17 +201,6 @@ export default {
       }
     }
   },
-  mounted () {
-    // const firebaseConfig = {
-    //   apiKey: process.env.apiKey,
-    //   authDomain: process.env.authDomain,
-    //   databaseURL: process.env.databaseURL,
-    //   projectId: process.env.projectId,
-    //   storageBucket: process.env.storageBucket,
-    //   messagingSenderId: process.env.messagingSenderId
-    // }
-    // firebase.initializeApp(firebaseConfig)
-  },
   methods: {
     preview (e, validate) {
       const vm = this
@@ -295,7 +284,7 @@ export default {
   },
   head () {
     return {
-      title: '新增粉專投稿貼文 | Meason Team',
+      title: '新增粉專投稿貼文',
       meta: [
         {
           hid: '新增粉專投稿貼文',
@@ -303,7 +292,7 @@ export default {
           content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
         }, {
           name: 'twitter:title',
-          content: '新增粉專投稿貼文 | Meason Team'
+          content: '新增粉專投稿貼文'
         }, {
           name: 'twitter:description',
           content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
@@ -315,7 +304,7 @@ export default {
           content: this.$store.state.metaImg
         }, {
           name: 'og:title',
-          content: '新增粉專投稿貼文 | Meason Team'
+          content: '新增粉專投稿貼文'
         }, {
           name: 'og:description',
           content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'

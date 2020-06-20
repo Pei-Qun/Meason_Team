@@ -11,7 +11,10 @@ const firebaseConfig = {
   storageBucket: process.env.storageBucket,
   messagingSenderId: process.env.messagingSenderId
 }
-firebase.initializeApp(firebaseConfig)
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig)
+}
 
 // !firebase.apps.length ? firebase.initializeApp(config) : ''
 // export const GoogleProvider = new firebase.auth.GoogleAuthProvider()

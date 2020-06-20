@@ -131,7 +131,7 @@ export default {
   },
   head () {
     return {
-      title: '粉專投稿專區 | Meason Team',
+      title: '粉專投稿專區',
       meta: [
         {
           hid: '投稿專區',
@@ -139,7 +139,7 @@ export default {
           content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
         }, {
           name: 'twitter:title',
-          content: '粉專投稿專區 | Meason Team'
+          content: '粉專投稿專區'
         }, {
           name: 'twitter:description',
           content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
@@ -151,7 +151,7 @@ export default {
           content: this.$store.state.metaImg
         }, {
           name: 'og:title',
-          content: '粉專投稿專區 | Meason Team'
+          content: '粉專投稿專區'
         }, {
           name: 'og:description',
           content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'

@@ -15,7 +15,7 @@ export default {
   },
   head () {
     return {
-      title: '迷聲相關連結 | Meason Team',
+      title: '迷聲相關連結',
       meta: [
         {
           hid: '迷聲相關連結',
@@ -23,7 +23,7 @@ export default {
           content: 'Meason 迷聲相關連結及文章分想'
         }, {
           name: 'twitter:title',
-          content: '迷聲相關連結 | Meason Team'
+          content: '迷聲相關連結'
         }, {
           name: 'twitter:description',
           content: 'Meason 迷聲相關連結及文章分想'
@@ -35,7 +35,7 @@ export default {
           content: this.$store.state.metaImg
         }, {
           name: 'og:title',
-          content: '迷聲相關連結 | Meason Team'
+          content: '迷聲相關連結'
         }, {
           name: 'og:description',
           content: 'Meason 迷聲相關連結及文章分想'

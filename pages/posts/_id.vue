@@ -49,15 +49,15 @@ export default {
   },
   head () {
     return {
-      title: `${this.data.content.slice(0, 10)} | Meason Team`,
+      title: `${this.data.content.slice(0, 10)}`,
       meta: [
         {
-          hid: `${this.data.content.slice(0, 10)} | Meason Team`,
+          hid: `${this.data.content.slice(0, 10)}`,
           name: 'Meason Team',
           content: '迷聲音樂粉絲專頁投稿貼文'
         }, {
           name: 'twitter:title',
-          content: `${this.data.content.slice(0, 10)} | Meason Team`
+          content: `${this.data.content.slice(0, 10)}`
         }, {
           name: 'twitter:description',
           content: '迷聲音樂粉絲專頁投稿貼文'
@@ -69,7 +69,7 @@ export default {
           content: this.data.img
         }, {
           name: 'og:title',
-          content: `${this.data.content.slice(0, 10)} | Meason Team`
+          content: `${this.data.content.slice(0, 10)}`
         }, {
           name: 'og:description',
           content: '迷聲音樂粉絲專頁投稿貼文'

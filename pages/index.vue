@@ -83,7 +83,7 @@ export default {
   },
   head () {
     return {
-      title: '迷聲音樂交流平台 | Meason Team',
+      title: '迷聲音樂交流平台',
       meta: [
         {
           hid: 'Meason Team',
@@ -91,27 +91,43 @@ export default {
           content: '迷聲音樂開發團隊及平台介紹'
         }, {
           name: 'twitter:title',
-          content: '迷聲音樂交流平台 | Meason Team'
+          hid: '',
+          property: '',
+          content: '迷聲音樂交流平台'
         }, {
           name: 'twitter:description',
+          hid: 'twitter:description',
+          property: 'twitter:description',
           content: '迷聲音樂開發團隊及平台介紹'
         }, {
           name: 'twitter:image',
+          hid: 'twitter:image',
+          property: 'twitter:image',
           content: this.$store.state.metaImg
         }, {
           name: 'twitter:card',
+          hid: 'twitter:card',
+          property: 'twitter:card',
           content: this.$store.state.metaImg
         }, {
           name: 'og:title',
-          content: '迷聲音樂交流平台 | Meason Team'
+          hid: 'og:title',
+          property: 'og:title',
+          content: '迷聲音樂交流平台'
         }, {
           name: 'og:description',
+          hid: 'og:description',
+          property: 'og:description',
           content: '迷聲音樂開發團隊及平台介紹'
         }, {
           name: 'og:type',
+          hid: 'og:type',
+          property: 'og:type',
           content: 'music'
         }, {
           name: 'og:image',
+          hid: 'og:image',
+          property: 'og:image',
           content: this.$store.state.metaImg
         }, {
           itemprop: 'image',

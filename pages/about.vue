@@ -140,7 +140,7 @@ export default {
   },
   head () {
     return {
-      title: '迷聲開發團隊介紹 | Meason Team',
+      title: '迷聲開發團隊介紹',
       meta: [
         {
           hid: '迷聲開發團隊介紹',
@@ -148,7 +148,7 @@ export default {
           content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
         }, {
           name: 'twitter:title',
-          content: '迷聲開發團隊介紹 | Meason Team'
+          content: '迷聲開發團隊介紹'
         }, {
           name: 'twitter:description',
           content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
@@ -160,7 +160,7 @@ export default {
           content: this.$store.state.metaImg
         }, {
           name: 'og:title',
-          content: '迷聲開發團隊介紹 | Meason Team'
+          content: '迷聲開發團隊介紹'
         }, {
           name: 'og:description',
           content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'

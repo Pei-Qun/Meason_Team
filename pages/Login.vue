@@ -16,9 +16,11 @@ export default {
       errorCode: ''
     }
   },
+  beforeMoute () {
+
+  },
   mounted () {
     const vm = this
-    const loginUrl = localStorage.getItem('loginUrl')
     const uiConfig = {
       // signInSuccessUrl: '/',
       signInOptions: [
@@ -48,7 +50,7 @@ export default {
               } else {
                 vm.isLoading = true
                 vm.storeData(gUser)
-                vm.$router.push(loginUrl)
+                vm.$router.push('/publication')
               }
             })
           }
@@ -59,17 +61,6 @@ export default {
       }
       // signInFlow: "popup"
     }
-    // const firebaseConfig = {
-    //   apiKey: process.env.apiKey,
-    //   authDomain: process.env.authDomain,
-    //   databaseURL: process.env.databaseURL,
-    //   projectId: process.env.projectId,
-    //   storageBucket: process.env.storageBucket,
-    //   messagingSenderId: process.env.messagingSenderId
-    // }
-    // firebase.initializeApp(firebaseConfig)
-
-    // const ui = new firebaseui.auth.AuthUI(firebase.auth())
     let ui = firebaseui.auth.AuthUI.getInstance()
     if (!ui) {
       ui = new firebaseui.auth.AuthUI(firebase.auth())
@@ -80,12 +71,11 @@ export default {
     loginApi (req, gUser) {
       const vm = this
       const url = `${process.env.API}/fbLogin`
-      const loginUrl = localStorage.getItem('loginUrl')
       axios.post(url, { uid: req.uid, user: req.user }).then((response) => {
         // console.log('登入/註冊成功', response)
       }).then(() => {
         vm.storeData(gUser)
-        vm.$router.push(loginUrl)
+        vm.$router.push('/publication')
       }).catch(function (error) {
         console.error('寫入使用者資訊錯誤', error)
       })
@@ -101,7 +91,7 @@ export default {
   },
   head () {
     return {
-      title: '登入或註冊 | Meason Team',
+      title: '登入或註冊',
       meta: [
         {
           hid: 'Meason Team',
@@ -109,7 +99,7 @@ export default {
           content: '迷聲音樂開發團隊及平台介紹'
         }, {
           name: 'twitter:title',
-          content: '登入或註冊 | Meason Team'
+          content: '登入或註冊'
         }, {
           name: 'twitter:description',
           content: '迷聲音樂開發團隊及平台介紹'
@@ -121,7 +111,7 @@ export default {
           content: this.$store.state.metaImg
         }, {
           name: 'og:title',
-          content: '登入或註冊 | Meason Team'
+          content: '登入或註冊'
         }, {
           name: 'og:description',
           content: '迷聲音樂開發團隊及平台介紹'
