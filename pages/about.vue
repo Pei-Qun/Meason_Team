@@ -143,29 +143,43 @@ export default {
       title: '迷聲開發團隊介紹',
       meta: [
         {
-          hid: '迷聲開發團隊介紹',
-          name: '迷聲開發團隊介紹',
+          hid: '迷聲開發團隊介紹 <3',
+          name: '迷聲開發團隊介紹 <3',
           content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
         }, {
           name: 'twitter:title',
+          hid: 'twitter:title',
+          property: 'twitter:title',
           content: '迷聲開發團隊介紹'
         }, {
           name: 'twitter:description',
+          hid: 'twitter:description',
+          property: 'twitter:description',
           content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
         }, {
           name: 'twitter:image',
+          hid: 'twitter:image',
+          property: 'twitter:image',
           content: this.$store.state.metaImg
         }, {
           name: 'twitter:card',
+          hid: 'twitter:card',
+          property: 'twitter:card',
           content: this.$store.state.metaImg
         }, {
           name: 'og:title',
-          content: '迷聲開發團隊介紹'
+          hid: 'og:title',
+          property: 'og:title',
+          content: '迷聲開發團隊介紹 <3'
         }, {
           name: 'og:description',
+          hid: 'og:description',
+          property: 'og:description',
           content: '迷聲成員及歷程介紹。團隊目前成員有曾霈宭、何嫥嫥、成竣昇、賴家緯'
         }, {
           name: 'og:type',
+          hid: 'og:type',
+          property: 'og:type',
           content: 'music'
         }
       ]
