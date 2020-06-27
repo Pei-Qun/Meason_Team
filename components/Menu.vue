@@ -160,7 +160,7 @@ export default {
         vm.$store.commit('auth/firebaseAuthState_Change', false)
         vm.$router.go(0)
       }, function (error) {
-        console.log(error)
+        console.error(error)
       })
     }
   }

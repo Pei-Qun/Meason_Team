@@ -1,15 +1,23 @@
 <template>
-  <div>
+  <main>
+    <Menu />
+    <Banner zone="publication" title="立即登入" bio="請登入以繼續" />
     <div id="firebaseui-auth-container" />
-  </div>
+  </main>
 </template>
 <script>
 import firebase from 'firebase/app'
 import * as firebaseui from 'firebaseui'
-import 'firebaseui/dist/firebaseui.css'
+// import 'firebaseui/dist/firebaseui.css'
 import axios from 'axios'
+import Menu from '~/components/Menu.vue'
+import Banner from '~/components/Banner.vue'
+import '~/assets/scss/_custom_firebaseui.scss'
 
 export default {
+  components: {
+    Menu, Banner
+  },
   data () {
     return {
       isLoading: false,
@@ -21,8 +29,8 @@ export default {
     const uiConfig = {
       // signInSuccessUrl: '/',
       signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.FacebookAuthProvider.PROVIDER_ID
+        // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ],
       callbacks: {
         signInSuccessWithAuthResult (result) {
