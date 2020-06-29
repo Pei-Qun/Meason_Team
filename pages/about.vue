@@ -54,6 +54,11 @@
                 <div class="col-12 col-sm-6 col-md-12 py-3">
                   <h4>負責範圍</h4>
                   <p>數據分析、後端開發</p>
+                  <ul class="socail">
+                    <li>
+                      <a href=""><i class="fab fa-instagram"></i></a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </li>

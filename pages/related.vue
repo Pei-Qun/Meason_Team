@@ -21,7 +21,8 @@ export default {
   },
   data () {
     return {
-      aaa: process.env.API
+      aaa: process.env.API,
+      list: null
     }
   },
   computed: {
@@ -31,7 +32,7 @@ export default {
   },
   methods: {
     tryFuc () {
-      this.fetchSomething()
+      this.insertSomething()
       // const url = 'https://infinite-dawn-78404.herokuapp.com'
       // axios.get(url, { uid: '123' }).then((response) => {
       //   console.log('登入/註冊成功', response)
@@ -39,11 +40,48 @@ export default {
     },
     async fetchSomething () {
       const vm = this
-      await vm.$axios.$post(`${vm.pyAPI}/query?column_name=uid`).then((response) => {
-        console.log('登入/註冊成功', response)
+      const req = 'column_name=*'
+      await vm.$axios.$post(`${vm.pyAPI}/query`, req).then((response) => {
+        const res = JSON.parse(response)
+        console.log(res)
+        vm.list = res
       }).catch((e) => {
         console.error(e)
       })
+    },
+    async insertSomething () {
+      const vm = this
+      const testJson = {
+        content: '這是內文2這是內文2這是內文2這是內文2這是內文2這是內文2',
+        classify: '文章分享',
+        img: 'https://cdn.pixabay.com/photo/2020/04/23/03/35/the-leaves-5080909_1280.jpg',
+        status: 'unpublish',
+        authName: 'ㄆㄌㄌ',
+        authID: 'id1345id',
+        incognito: true,
+        timestamp: JSON.stringify(Date.now()),
+        original: '12314'
+      }
+      await vm.$axios.$post(`${vm.pyAPI}/insert`, testJson).then((response) => {
+        // console.log(response, 'test')
+        const res = JSON.parse(response)
+        vm.list = res
+      }).catch((e) => {
+        console.error(e)
+      })
+    },
+    formTypeMethod (obj) {
+      let str = ''
+      Object.keys(obj).forEach((item, index, arr) => {
+        if (index !== arr.length - 1) {
+          str += `${item.toLocaleLowerCase()}=${obj[item]}&`
+          console.log(item)
+        } else {
+          str += `${item.toLocaleLowerCase()}=${obj[item]}`
+        }
+      })
+      console.log(str)
+      return str
     }
   },
   head () {

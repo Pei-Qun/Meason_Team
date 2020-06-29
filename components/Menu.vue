@@ -128,6 +128,7 @@
 
 <script>
 import firebase from 'firebase/app'
+import $ from 'jquery'
 
 export default {
   computed: {
@@ -145,13 +146,10 @@ export default {
   },
   methods: {
     scrollFuc () {
-      const nav = document.getElementById('navbar').classList
       if (document.documentElement.scrollTop >= 150) {
-        if (nav.contains('shrink') === false) {
-          nav.toggle('shrink')
-        }
-      } else if (nav.contains('shrink') === true) {
-        nav.toggle('shrink')
+        $('#navbar').addClass('shrink')
+      } else if ($('#navbar').hasClass('shrink')) {
+        $('#navbar').toggleClass('shrink')
       }
     },
     logout () {

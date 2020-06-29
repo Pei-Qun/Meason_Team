@@ -9,7 +9,7 @@
     />
     <div class="card-body">
       <h3 class="card-title">
-        {{ data.content }}
+        {{ data.content.slice(0, 15) }}
       </h3>
       <article class="card-text">
         <span>{{ time }}</span>
@@ -97,5 +97,8 @@ export default {
     padding: 3px 5px;
     border-radius: 3px;
   }
+}
+.card {
+  height: 100%;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <main>
+    <Loading v-if="isLoading" />
     <Menu />
     <Banner zone="publication" title="新增投稿" bio="如有梗圖或是文章欲投稿到<a class='text-warning' href='https://www.facebook.com/measonmusic/'>【紛絲專頁】</a>上，可至本站進行投稿" />
     <div class="container py-5">
@@ -10,16 +11,16 @@
               主題分類
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">
+              <li class="list-group-item" @click="getData()">
                 <i class="fas fa-list-ul" /> 全部投稿
               </li>
-              <li class="list-group-item">
+              <li class="list-group-item" @click="classifyData('classify', '梗圖分享')">
                 <i class="far fa-laugh-wink" /> 梗圖分享
               </li>
-              <li class="list-group-item">
+              <li class="list-group-item" @click="classifyData('classify', '文章分享')">
                 <i class="fas fa-scroll" /> 文章分享
               </li>
-              <li class="list-group-item">
+              <li class="list-group-item" @click="classifyData('classify', '心情分享')">
                 <i class="far fa-heart" /> 心情分享
               </li>
               <nuxt-link to="/posts/add_post" class="list-group-item add" tag="li">
@@ -29,31 +30,34 @@
           </div>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-9">
-          <ul class="row">
-            <div class="col-12 title">
-              <h3>全部投稿</h3>
+          <ul v-if="list" class="row">
+            <li class="col-12 title">
+              <h3>{{ dom.status }}</h3>
               <ul>
                 <li>
-                  <button class="btn btn-sm btn-outline-primary">
+                  <button class="btn btn-sm btn-outline-primary" @click="classifyData('status', 'publish')">
                     已引用
                   </button>
                 </li>
                 <li>
-                  <button class="btn btn-sm btn-outline-primary">
+                  <button class="btn btn-sm btn-outline-primary" @click="classifyData('status', 'unpublish')">
                     未引用
                   </button>
                 </li>
                 <li>
-                  <button class="btn btn-sm btn-outline-secondary">
+                  <button class="btn btn-sm btn-outline-secondary" @click="classifyData('status', 'reject')">
                     已違規
                   </button>
                 </li>
               </ul>
-            </div>
+            </li>
             <li v-for="(item, index) in list" :key="index" class="col-lg-4 col-md-6 mb-4">
               <Card :data="item" />
             </li>
           </ul>
+          <p v-else>
+            尚無資料
+          </p>
           <nav aria-label="Page navigation" class="d-flex justify-content-center mt-5">
             <ul class="pagination">
               <li class="page-item">
@@ -83,51 +87,104 @@
 import Menu from '~/components/Menu.vue'
 import Banner from '~/components/Banner.vue'
 import Card from '~/components/Card.vue'
+import Loading from '~/components/Loading.vue'
 
 export default {
   components: {
-    Menu, Banner, Card
+    Menu, Banner, Card, Loading
   },
   data () {
     return {
-      list: null
+      list: null,
+      isLoading: false,
+      dom: {
+        status: '全部投稿'
+      }
+    }
+  },
+  computed: {
+    pyAPI () {
+      return this.$store.state.pyAPI
     }
   },
   created () {
     const vm = this
-    vm.list = [
-      {
-        uid: '11111',
-        content: '這是內文',
-        classify: '這是分類',
-        img: 'https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559__340.jpg',
-        status: 'publish',
-        authName: '作者名稱',
-        authID: '作者ID',
-        incognito: true,
-        timestamp: '1591696005476'
-      }, {
-        uid: '22222',
-        content: '這是內文2',
-        classify: '這是分類2',
-        img: 'https://cdn.pixabay.com/photo/2020/06/01/08/46/water-5245722__340.jpg',
-        status: 'reject',
-        authName: '作者名稱2',
-        authID: '作者ID2',
-        incognito: false,
-        timestamp: '1591696905476'
-      }, {
-        uid: '33333',
-        content: '這是內文3',
-        classify: '這是分類2',
-        img: 'https://cdn.pixabay.com/photo/2020/06/03/15/11/tree-5255288__340.jpg',
-        status: 'unpublish',
-        authName: '作者名稱3',
-        authID: '作者ID3',
-        incognito: true,
-        timestamp: '1491696905476'
-      }
-    ]
+    vm.getData()
+    // vm.list = [
+    //   {
+    //     uid: '11111',
+    //     content: '這是內文',
+    //     classify: '這是分類',
+    //     img: 'https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559__340.jpg',
+    //     status: 'publish',
+    //     authName: '作者名稱',
+    //     authID: '作者ID',
+    //     incognito: true,
+    //     timestamp: '1591696005476'
+    //   }, {
+    //     uid: '22222',
+    //     content: '這是內文2',
+    //     classify: '這是分類2',
+    //     img: 'https://cdn.pixabay.com/photo/2020/06/01/08/46/water-5245722__340.jpg',
+    //     status: 'reject',
+    //     authName: '作者名稱2',
+    //     authID: '作者ID2',
+    //     incognito: false,
+    //     timestamp: '1591696905476'
+    //   }, {
+    //     uid: '33333',
+    //     content: '這是內文3',
+    //     classify: '這是分類2',
+    //     img: 'https://cdn.pixabay.com/photo/2020/06/03/15/11/tree-5255288__340.jpg',
+    //     status: 'unpublish',
+    //     authName: '作者名稱3',
+    //     authID: '作者ID3',
+    //     incognito: true,
+    //     timestamp: '1491696905476'
+    //   }
+    // ]
+  },
+  methods: {
+    async getData () {
+      const vm = this
+      vm.isLoading = true
+      await vm.$axios.$post(`${vm.pyAPI}/query`, { column: '*' }).then((response) => {
+        const res = JSON.parse(response)
+        vm.list = res
+        vm.dom.status = '全部投稿'
+      }).then(() => {
+        vm.isLoading = false
+      }).catch((e) => {
+        console.error(e)
+      })
+    },
+    async classifyData (col, val) {
+      const vm = this
+      vm.isLoading = true
+      await vm.$axios.$post(`${vm.pyAPI}/where`, { column: col, valuse: val }).then((response) => {
+        const res = JSON.parse(response)
+        vm.list = res
+        if (col === 'status') {
+          switch (val) {
+            case 'publish':
+              vm.dom.status = '已引用'
+              break
+            case 'unpublish':
+              vm.dom.status = '未引用'
+              break
+            case 'reject':
+              vm.dom.status = '已違規'
+              break
+          }
+        } else {
+          vm.dom.status = val
+        }
+      }).then(() => {
+        vm.isLoading = false
+      }).catch((e) => {
+        console.error(e)
+      })
+    }
   },
   head () {
     return {

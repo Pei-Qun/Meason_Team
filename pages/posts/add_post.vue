@@ -1,5 +1,6 @@
 <template>
   <main>
+    <Loading v-if="isLoading" />
     <Menu />
     <Banner zone="publication" title="新增投稿" bio="如有梗圖或是文章欲投稿到<a class='text-warning' href='https://www.facebook.com/measonmusic/'>【紛絲專頁】</a>上，可至本站進行投稿" />
     <div class="container">
@@ -11,7 +12,7 @@
           </div>
           <ValidationObserver ref="form">
             <form @submit.prevent="onSubmit">
-              <ValidationProvider v-slot="{ errors, validate }" rules="ext:jpg,png|size:100" class="img-area" tag="div" name="圖片">
+              <ValidationProvider v-slot="{ errors, validate }" rules="ext:jpg,png|size:3000" class="img-area" tag="div" name="圖片">
                 <label for="file-input" class="files">
                   <img
                     v-if="!tempDom.imgurl"
@@ -124,6 +125,7 @@ import { required, min, max, ext, size } from 'vee-validate/dist/rules'
 import zhTW from 'vee-validate/dist/locale/zh_TW.json'
 import Menu from '~/components/Menu.vue'
 import Banner from '~/components/Banner.vue'
+import Loading from '~/components/Loading.vue'
 
 // Override the default message.
 extend('required', required)
@@ -141,7 +143,7 @@ export default {
     requiresAuth: true
   },
   components: {
-    Menu, Banner, ValidationProvider, ValidationObserver
+    Menu, Banner, ValidationProvider, ValidationObserver, Loading
   },
   data () {
     return {
@@ -177,6 +179,12 @@ export default {
     },
     userName () {
       return this.$store.state.auth.userData_displayName
+    },
+    userID () {
+      return this.$store.state.auth.userData_id
+    },
+    pyAPI () {
+      return this.$store.state.pyAPI
     }
   },
   watch: {
@@ -236,7 +244,6 @@ export default {
     },
     uploadImg () {
       const vm = this
-      vm.isLoading = true
       if (!vm.formData.img) {
         // 檔名設定
         const timestamp = Number(new Date())
@@ -247,7 +254,10 @@ export default {
         storageRef.put(file).then((snapshot) => {
           // 取得圖片位置
           snapshot.ref.getDownloadURL().then(function (downloadURL) {
+            console.log(downloadURL)
             vm.formData.img = downloadURL
+          }).then(() => {
+            vm.submitMethod()
             vm.isLoading = false
           })
         })
@@ -273,12 +283,44 @@ export default {
           return
         }
         const fuc = async () => {
-          await vm.uploadImg()
-          await new Promise((resolve) => {
-            // console.log(vm.formData)
-          })
+          if (vm.tempDom.imgurl) {
+            vm.isLoading = true
+            await vm.uploadImg()
+          } else {
+            alert('尚未上傳圖片')
+          }
+          // await new Promise((resolve) => {
+          //   vm.isLoading = false
+          // })
+          // await vm.$axios.$post(`${vm.pyAPI}/insert`, reqJSON).then((response) => {
+          //   console.log(response, 'test')
+          //   vm.isLoading = false
+          // }).catch((e) => {
+          //   console.error(e)
+          // })
         }
         fuc()
+      })
+    },
+    async submitMethod () {
+      const vm = this
+      const reqJSON = {
+        content: vm.formData.content,
+        classify: vm.formData.classify,
+        img: vm.formData.img,
+        status: vm.formData.status,
+        authName: vm.userName,
+        authID: vm.userID,
+        incognito: vm.formData.incognito,
+        timestamp: JSON.stringify(Date.now()),
+        original: vm.formData.original
+      }
+      console.log(reqJSON, 'test')
+      await vm.$axios.$post(`${vm.pyAPI}/insert`, reqJSON).then((response) => {
+        console.log(response, 'test')
+        vm.$router.push('/publication')
+      }).catch((e) => {
+        console.error(e)
       })
     }
   },
@@ -328,6 +370,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.loading{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 48px;
+  background-color: rgba(0,0,0,.8);
+  z-index: 100000;
+}
 .img-area{
   border: 1px solid #ccc;
   border-radius: 10px;
