@@ -6,6 +6,7 @@
       try
     </button>
     {{ aaa }}
+    <h2>{{ pyAPI }}</h2>
   </main>
 </template>
 
@@ -23,6 +24,11 @@ export default {
       aaa: process.env.API
     }
   },
+  computed: {
+    pyAPI () {
+      return this.$store.state.pyAPI
+    }
+  },
   methods: {
     tryFuc () {
       this.fetchSomething()
@@ -33,8 +39,10 @@ export default {
     },
     async fetchSomething () {
       const vm = this
-      await vm.$axios.$post('https://infinite-dawn-78404.herokuapp.com/add').then((response) => {
+      await vm.$axios.$post(`${vm.pyAPI}/query?column_name=uid`).then((response) => {
         console.log('登入/註冊成功', response)
+      }).catch((e) => {
+        console.error(e)
       })
     }
   },

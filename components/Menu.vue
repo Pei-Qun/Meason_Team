@@ -158,7 +158,9 @@ export default {
       const vm = this
       firebase.auth().signOut().then(function () {
         vm.$store.commit('auth/firebaseAuthState_Change', false)
-        vm.$router.go(0)
+        if (vm.$route.path !== '/posts/add_post') {
+          vm.$router.go(0)
+        }
       }, function (error) {
         console.error(error)
       })

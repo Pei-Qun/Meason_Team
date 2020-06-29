@@ -75,7 +75,7 @@ export default {
   methods: {
     loginApi (req, gUser) {
       const vm = this
-      const url = `${process.env.API}/fbLogin`
+      const url = 'https://glacial-bayou-94392.herokuapp.com/fbLogin'
       axios.post(url, { uid: req.uid, user: req.user }).then((response) => {
         // console.log('登入/註冊成功', response)
       }).then(() => {
