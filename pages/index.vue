@@ -1,7 +1,32 @@
 <template>
   <main>
     <Menu />
-    <Banner :zone="$nuxt.$route.name" title="音樂交流平台" bio="開發團隊及平台介紹" />
+    <div class="banner">
+      <div class="container-fluid">
+        <div class="row index">
+          <div class="col-lg-6 text">
+            <article>
+              <hr class="line">
+              <h2 class="text-light">
+                <span>Meason 迷聲</span>
+                <span>開發團隊介紹</span>
+              </h2>
+              <p>我們是一群熱血的畢業生，</p>
+              <h3 class="h5">
+                團隊尚未成立公司，計畫成立非營利組織。<br>熱愛音樂的我們，想要盡一份心力提升台灣音樂風氣
+              </h3>
+              <div class="d-flex">
+                <a href="https://meason.club/" target="_blank" class="mr-3 links">
+                  前往平台
+                </a>
+                <a :href="pyAPI" target="_blank" class="links bg-light text-dark">我要抖內</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6 pic" :style="{'backgroundImage': `url(${require('@/assets/img/banner/index-banner.jpg')})`}" />
+        </div>
+      </div>
+    </div>
     <div class="about-group">
       <div class="container">
         <div class="row">
@@ -19,7 +44,15 @@
     </div>
     <div class="member index">
       <div class="container-fluid">
-        <div class="row flex-lg-wrap-reverse flex-md-wrap-reverse">
+        <div class="row">
+          <div class="col-xl-12 col-lg-4 dev-title">
+            <h3 class="h3">
+              開發團隊
+            </h3>
+            <!-- <NuxtLink to="/about" class="nav-link">
+              了解<span>更多</span>
+            </NuxtLink> -->
+          </div>
           <div class="col-xl-12 col-lg-8 ">
             <div class="row team">
               <div class="col-xl-3 col-lg-6 col-md-6">
@@ -30,6 +63,10 @@
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="曾霈宭">
                 </div>
+                <!-- <div class="col-12 col-sm-6 col-md-12 py-3">
+                  <h4>負責範圍</h4>
+                  <p>Web 全端開發、網路行銷</p>
+                </div> -->
               </div>
               <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="pic pic2">
@@ -39,6 +76,10 @@
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="何嫥嫥">
                 </div>
+                <!-- <div class="col-12 col-sm-6 col-md-12 py-3">
+                  <h4>負責範圍</h4>
+                  <p>平面設計、影片剪輯</p>
+                </div> -->
               </div>
               <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="pic pic3">
@@ -48,6 +89,10 @@
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="成竣昇">
                 </div>
+                <!-- <div class="col-12 col-sm-6 col-md-12 py-3">
+                  <h4>負責範圍</h4>
+                  <p>數據分析、後端開發</p>
+                </div> -->
               </div>
               <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="pic pic4">
@@ -57,29 +102,80 @@
                   </div>
                   <img src="~/assets/img/transparent.png" width="100%" alt="賴家緯">
                 </div>
+                <!-- <div class="col-12 col-sm-6 col-md-12 py-3">
+                  <h4>負責範圍</h4>
+                  <p>對內外公共關係實務與宣傳</p>
+                </div> -->
               </div>
             </div>
-          </div>
-          <div class="col-xl-12 col-lg-4 dev-title">
-            <h3>開發團隊</h3>
-            <NuxtLink to="/about" class="nav-link">
-              了解<span>更多</span>
-            </NuxtLink>
           </div>
         </div>
       </div>
     </div>
+    <section class="process-area">
+      <ul class="process">
+        <li class="list">
+          <div class="con">
+            <article>
+              <p>2018 / <span>02</span></p>
+              <h3>迷聲構想誕生</h3>
+              <h5>當我們在煩腦<b>專題製作</b>的主題時，夥伴在煩惱樂團團員老是缺席，發現了台灣音樂圈這方面的資訊漏洞</h5>
+            </article>
+          </div>
+        </li>
+        <li class="list">
+          <div class="con">
+            <article>
+              <p>2019 / <span>01</span></p>
+              <h3>迷聲 1.0 正式上線</h3>
+              <h5>為了提升台灣音樂風氣，每個夥伴經過數百個小時的努力，一邊學習、一邊創作，將迷聲第一版完成</h5>
+            </article>
+          </div>
+        </li>
+        <li class="list">
+          <div class="con">
+            <article>
+              <p>2019 / <span>05</span></p>
+              <h3>參加放視大賞</h3>
+              <h5>以文藻外語大學的數位內容應用與管理系，主題「<b>艷視</b>」畢業專題展出，參加<b>放視大賞</b>行動應用類-軟體內容組，入圍第二階段</h5>
+            </article>
+          </div>
+        </li>
+        <li class="list">
+          <div class="con">
+            <article>
+              <p>2019 / <span>09</span></p>
+              <h3>迷聲 2.0 正式上線</h3>
+              <h5>因為受到許多音樂人支持，畢業後的我們決定繼續經營迷聲，希望可以幫助到有需要的人。為了讓使用者能操作得更為順暢，我們做了一次軟體重構</h5>
+            </article>
+          </div>
+        </li>
+        <li class="list">
+          <div class="con">
+            <article>
+              <p>2020 / <span>05</span></p>
+              <h3>里程碑: 會員破千名</h3>
+              <h5>會員破千名、粉絲專頁也突破三千讚，已配對 500 位樂手，每月活耀使用者突破兩千人。籌辦公司或協會中...</h5>
+            </article>
+          </div>
+        </li>
+      </ul>
+    </section>
   </main>
 </template>
 
 <script>
 import Menu from '~/components/Menu.vue'
-import Banner from '~/components/Banner.vue'
 // import func from '../vue-temp/vue-editor-bridge'
 
 export default {
   components: {
-    Menu, Banner
+    Menu
+  },
+  computed: {
+    pyAPI () {
+      return this.$store.state.donateURL
+    }
   },
   head () {
     return {

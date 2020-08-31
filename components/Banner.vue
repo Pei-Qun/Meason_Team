@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <div class="container-fluid">
-      <div class="row" :class="{'index': zone === 'index'}">
+      <div class="row">
         <div class="col-md-6 text">
           <article>
             <hr class="line">
@@ -10,7 +10,10 @@
               <span>{{ title }}</span>
             </h2>
             <p v-html="bio" />
-            <a href="https://meason.music/" target="_blank">前往平台</a>
+            <!-- <a href="https://meason.music/" target="_blank" class="links">前往平台</a> -->
+            <a :href="pyAPI" class="links" title="我要抖內" target="_blank">
+              我要<span>抖內</span>
+            </a>
           </article>
         </div>
         <div class="col-md-6 pic" :style="{'backgroundImage': `url(${require('@/assets/img/banner/' + zone + '-banner.jpg')})`}" />
@@ -35,28 +38,41 @@ export default {
       default: '音樂素人交流平台'
     }
   },
-  data () {
-    return {
-      // zone: $nuxt.$route.path,
+  computed: {
+    pyAPI () {
+      return this.$store.state.donateURL
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .banner{
   background-color: #0B0F30;
   .row{
     height: 500px;
-    &.index{
-      height: 100vh;
-      .text{
-        padding-top: 100px;
-      }
-    }
     @media (max-width: 767.98px) {
       height: auto;
       flex-wrap: wrap-reverse;
+    }
+  }
+  .index{
+    height: 100vh;
+    .text{
+      padding-top: 100px;
+    }
+    @media (max-width: 991px) {
+      // height: auto;
+      flex-wrap: wrap-reverse;
+      .pic{
+        min-height: 300px;
+      }
+      .text{
+        padding-top: 0;
+      }
+      .d-flex{
+        justify-content: center;
+      }
     }
   }
   .text{
@@ -67,7 +83,7 @@ export default {
       max-width: 80%;
       color: #fff;
     }
-    a{
+    .links{
       margin-top: 30px;
       font-size: 14px;
       border: 1px solid #fff;

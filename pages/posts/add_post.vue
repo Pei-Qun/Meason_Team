@@ -21,7 +21,7 @@
                     class="select-img"
                   >
                   <div v-else class="img-preview">
-                    <img id="scream" :src="tempDom.imgurl">
+                    <img id="scream" :src="tempDom.imgurl" alt="迷聲">
                   </div>
                   <input
                     id="file-input"
@@ -326,44 +326,7 @@ export default {
   },
   head () {
     return {
-      title: '新增粉專投稿貼文',
-      meta: [
-        {
-          hid: '新增粉專投稿貼文',
-          name: '新增粉專投稿貼文',
-          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
-        }, {
-          name: 'twitter:title',
-          content: '新增粉專投稿貼文'
-        }, {
-          name: 'twitter:description',
-          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
-        }, {
-          name: 'twitter:image',
-          content: this.$store.state.metaImg
-        }, {
-          name: 'twitter:card',
-          content: this.$store.state.metaImg
-        }, {
-          name: 'og:title',
-          content: '新增粉專投稿貼文'
-        }, {
-          name: 'og:description',
-          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
-        }, {
-          name: 'og:type',
-          content: 'music'
-        }, {
-          name: 'og:image',
-          content: this.$store.state.metaImg
-        }, {
-          itemprop: 'image',
-          content: this.$store.state.metaImg
-        }, {
-          itemprop: 'description',
-          content: '如有梗圖或是文章欲投稿到【紛絲專頁】上，可至本站進行投稿'
-        }
-      ]
+      title: '新增粉專投稿貼文'
     }
   }
 }

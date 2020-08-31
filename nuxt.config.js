@@ -13,7 +13,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'keywords', content: '迷聲, Meason, 音樂交流, 音樂交流平台, 迷聲公司, 迷聲團隊'},
+      { name: 'keywords', content: '迷聲, Meason, 音樂交流, 音樂交流平台, 迷聲公司, 迷聲團隊, 迷聲音樂'},
       { name: 'author', content: '曾霈宭'},
       { name: 'theme-color', content: '#0b0f30'},
       { hid: 'Meason Team', name: 'Meason Team', content: process.env.npm_package_description || '' },

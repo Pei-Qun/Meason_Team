@@ -19,21 +19,16 @@
       </button>
       <nav id="navbarText" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item" title="相關連結">
+            <a :href="pyAPI" class="nav-link" title="我要抖內" target="_blank">
+              我要<span>抖內</span>
+            </a>
+          </li>
           <li class="nav-item">
             <NuxtLink to="/" class="nav-link" title="關於迷聲">
-              關於<span>迷聲</span>
-            </NuxtLink>
-          </li>
-          <li class="nav-item" title="關於迷聲">
-            <NuxtLink to="/about" class="nav-link">
               團隊<span>介紹</span>
             </NuxtLink>
           </li>
-          <!-- <li class="nav-item" title="使用說明">
-            <NuxtLink to="/instruction" class="nav-link">
-              使用<span>說明</span>
-            </NuxtLink>
-          </li> -->
           <li class="nav-item" title="相關連結">
             <NuxtLink to="/related" class="nav-link">
               相關<span>連結</span>
@@ -134,6 +129,9 @@ export default {
   computed: {
     firebaseAuthState () {
       return this.$store.state.auth.firebaseAuthState
+    },
+    pyAPI () {
+      return this.$store.state.donateURL
     }
   },
   mounted () {
@@ -146,7 +144,7 @@ export default {
   },
   methods: {
     scrollFuc () {
-      if (document.documentElement.scrollTop >= 150) {
+      if (document.documentElement.scrollTop >= 30) {
         $('#navbar').addClass('shrink')
       } else if ($('#navbar').hasClass('shrink')) {
         $('#navbar').toggleClass('shrink')

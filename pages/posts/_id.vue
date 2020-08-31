@@ -1,5 +1,7 @@
 <template>
   <main>
+    <Menu />
+    <Banner zone="publication" title="新增投稿" bio="如有梗圖或是文章欲投稿到<a class='text-warning' href='https://www.facebook.com/measonmusic/'>【紛絲專頁】</a>上，可至本站進行投稿" />
     <div class="container py-5">
       <div class="d-flex align-items-center justify-content-between">
         <nuxt-link to="/publication" class="btn btn-outline-secondary">
@@ -33,9 +35,15 @@
           </article>
           <article>
             <p>投稿狀態</p>
-            <h4 v-if="data.status === 'unpublish'" class="badge badge-info">未引用</h4>
-            <h4 v-if="data.status === 'publish'" class="badge badge-success">已引用</h4>
-            <h4 v-if="data.status === 'reject'" class="badge badge-danger">已違規</h4>
+            <h4 v-if="data.status === 'unpublish'" class="badge badge-info">
+              未引用
+            </h4>
+            <h4 v-if="data.status === 'publish'" class="badge badge-success">
+              已引用
+            </h4>
+            <h4 v-if="data.status === 'reject'" class="badge badge-danger">
+              已違規
+            </h4>
           </article>
           <article>
             <p>貼文內容</p>
@@ -48,7 +56,13 @@
 </template>
 
 <script>
+import Menu from '~/components/Menu.vue'
+import Banner from '~/components/Banner.vue'
+
 export default {
+  components: {
+    Menu, Banner
+  },
   data () {
     return {
       path: '',
@@ -90,73 +104,24 @@ export default {
       return result
     }
   },
+  created () {
+    this.path = this.$route.params.id
+    this.getData()
+  },
   methods: {
     async getData () {
       const vm = this
       await vm.$axios.$post(`${vm.pyAPI}/where`, { column: 'uid', valuse: vm.path }).then((response) => {
         const res = JSON.parse(response)
-        console.log(res[0])
         vm.data = res[0]
       }).catch((e) => {
         console.error(e)
       })
     }
   },
-  created () {
-    this.path = this.$route.params.id
-    this.getData()
-    // this.data = {
-    //   uid: '11111',
-    //   content: '這是內文',
-    //   classify: '這是分類',
-    //   img: 'https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559__340.jpg',
-    //   status: 'publish',
-    //   authName: '作者名稱',
-    //   authID: '作者ID',
-    //   incognito: true,
-    //   timestamp: '1591696005476'
-    // }
-  },
   head () {
     return {
-      // title: `${this.data.content.slice(0, 10)}`,
-      // meta: [
-      //   {
-      //     hid: `${this.data.content.slice(0, 10)}`,
-      //     name: 'Meason Team',
-      //     content: '迷聲音樂粉絲專頁投稿貼文'
-      //   }, {
-      //     name: 'twitter:title',
-      //     content: `${this.data.content.slice(0, 10)}`
-      //   }, {
-      //     name: 'twitter:description',
-      //     content: '迷聲音樂粉絲專頁投稿貼文'
-      //   }, {
-      //     name: 'twitter:image',
-      //     content: this.data.img
-      //   }, {
-      //     name: 'twitter:card',
-      //     content: this.data.img
-      //   }, {
-      //     name: 'og:title',
-      //     content: `${this.data.content.slice(0, 10)}`
-      //   }, {
-      //     name: 'og:description',
-      //     content: '迷聲音樂粉絲專頁投稿貼文'
-      //   }, {
-      //     name: 'og:type',
-      //     content: 'music'
-      //   }, {
-      //     name: 'og:image',
-      //     content: this.data.img
-      //   }, {
-      //     itemprop: 'image',
-      //     content: this.data.img
-      //   }, {
-      //     itemprop: 'description',
-      //     content: '迷聲音樂粉絲專頁投稿貼文'
-      //   }
-      // ]
+      // title: `${this.data.content.slice(0, 10)}`
     }
   }
 }
@@ -176,6 +141,9 @@ export default {
     margin: 5px 0;
     p{
       flex: 0 0 100px
+    }
+    pre{
+      white-space: pre-wrap;
     }
   }
 }

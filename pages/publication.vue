@@ -58,7 +58,7 @@
           <p v-else>
             尚無資料
           </p>
-          <nav aria-label="Page navigation" class="d-flex justify-content-center mt-5">
+          <!-- <nav aria-label="Page navigation" class="d-flex justify-content-center mt-5">
             <ul class="pagination">
               <li class="page-item">
                 <a class="page-link" href="#">上一頁</a>
@@ -76,7 +76,7 @@
                 <a class="page-link" href="#">下一頁</a>
               </li>
             </ul>
-          </nav>
+          </nav> -->
         </div>
       </div>
     </div>
@@ -110,39 +110,6 @@ export default {
   created () {
     const vm = this
     vm.getData()
-    // vm.list = [
-    //   {
-    //     uid: '11111',
-    //     content: '這是內文',
-    //     classify: '這是分類',
-    //     img: 'https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559__340.jpg',
-    //     status: 'publish',
-    //     authName: '作者名稱',
-    //     authID: '作者ID',
-    //     incognito: true,
-    //     timestamp: '1591696005476'
-    //   }, {
-    //     uid: '22222',
-    //     content: '這是內文2',
-    //     classify: '這是分類2',
-    //     img: 'https://cdn.pixabay.com/photo/2020/06/01/08/46/water-5245722__340.jpg',
-    //     status: 'reject',
-    //     authName: '作者名稱2',
-    //     authID: '作者ID2',
-    //     incognito: false,
-    //     timestamp: '1591696905476'
-    //   }, {
-    //     uid: '33333',
-    //     content: '這是內文3',
-    //     classify: '這是分類2',
-    //     img: 'https://cdn.pixabay.com/photo/2020/06/03/15/11/tree-5255288__340.jpg',
-    //     status: 'unpublish',
-    //     authName: '作者名稱3',
-    //     authID: '作者ID3',
-    //     incognito: true,
-    //     timestamp: '1491696905476'
-    //   }
-    // ]
   },
   methods: {
     async getData () {

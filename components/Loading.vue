@@ -1,6 +1,6 @@
 <template>
   <div class="bg">
-    <img src="~/assets/img/loading.svg" alt="">
+    <img src="~/assets/img/loading.svg" alt="迷聲">
   </div>
 </template>
 
