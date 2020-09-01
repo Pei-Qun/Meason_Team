@@ -44,7 +44,8 @@ export default {
   */
   plugins: [
     {src: '@/plugins/bootstrap.js'},
-    {src: '@/plugins/firebase.js'}
+    {src: '@/plugins/firebase.js'},
+    {src: '~plugins/ga.js', mode: 'client'}
   ],
   /*
   ** Nuxt.js dev-modules
