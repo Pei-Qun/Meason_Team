@@ -20,7 +20,7 @@
     "firebase": "^7.15.0",
     "firebaseui": "^4.5.1",
     "jquery": "^3.5.1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "popper.js": "^1.16.1",
     "typescript": "^3.9.2",
     "vee-validate": "^3.3.3"
